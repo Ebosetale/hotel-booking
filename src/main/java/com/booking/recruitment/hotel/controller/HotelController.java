@@ -29,4 +29,22 @@ public class HotelController {
   public Hotel createHotel(@RequestBody Hotel hotel) {
     return hotelService.createNewHotel(hotel);
   }
+
+  @GetMapping("/{id}")
+  public Hotel getById(@RequestParam Long id){
+    return hotelService.getHotelById(id);
+  }
+
+  @DeleteMapping("/{id}")
+  public Hotel deleteById(@RequestParam Long id){
+    return hotelService.deleteHotelById(id);
+  }
+
+  @GetMapping("/search/{cityId}/")
+  public List<Hotel> search(@PathVariable Long cityId, @RequestParam String sortBy){
+    return hotelService.searchHotelByDistance(cityId, sortBy);
+  }
+
+
+
 }
